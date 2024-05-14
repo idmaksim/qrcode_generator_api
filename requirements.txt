@@ -1,5 +1,2 @@
 fastapi[all]
-sqlalchemy
-# psycopg2
-python-multipart
-aiosqlite
+qrcode
