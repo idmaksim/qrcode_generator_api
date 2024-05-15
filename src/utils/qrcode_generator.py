@@ -4,9 +4,6 @@ from qrcode.main import QRCode
 from schemas.qrcode_info import QRCodeInfo
 from PIL import Image
 
-from qrcode.image.styledpil import StyledPilImage
-from qrcode.image.styles.colormasks import RadialGradiantColorMask
-
 
 class QRCodeGenerator:
     @staticmethod
