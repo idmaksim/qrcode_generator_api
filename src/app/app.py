@@ -13,6 +13,3 @@ app.include_router(main_api_router)
 async def redirect_to_docs():
     return '/docs'
 
-"""
-write a service and method for generate qr code
-"""
