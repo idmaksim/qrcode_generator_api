@@ -1,2 +1,2 @@
-fastapi[all]
 qrcode
+fastapi[all]

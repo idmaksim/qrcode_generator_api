@@ -1,5 +1,5 @@
 from fastapi import APIRouter
-
+from . import generator
 
 
 main_api_router = APIRouter(
@@ -7,7 +7,7 @@ main_api_router = APIRouter(
 )
 
 routers = [
-    
+    generator.router
 ]
 
 [main_api_router.include_router(router) for router in routers]
