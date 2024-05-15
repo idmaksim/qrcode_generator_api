@@ -8,5 +8,5 @@ data = {
 
 response = requests.post(url=url, json=data)
 
-print(response.content)
+print(type(response.content))
 
