@@ -2,6 +2,10 @@ from io import BytesIO
 import qrcode
 from qrcode.main import QRCode
 from schemas.qrcode_info import QRCodeInfo
+from PIL import Image
+
+from qrcode.image.styledpil import StyledPilImage
+from qrcode.image.styles.colormasks import RadialGradiantColorMask
 
 
 class QRCodeGenerator:
@@ -16,12 +20,14 @@ class QRCodeGenerator:
 
         qr.add_data(qr_info.data)
 
-        return qr.make_image(fill=qr_info.fill, back_color=qr_info.back_color)
+        qr.make(fit=True)
+
+        return qr.make_image(fill_color=qr_info.fill, back_color=qr_info.back_color)
 
 
 class BytesArrayGenerator:
     @staticmethod
-    async def to_bytes(img):
+    async def to_bytes(img: Image):
         img_byte_arr = BytesIO()
         img.save(img_byte_arr)
         img_byte_arr.seek(0)

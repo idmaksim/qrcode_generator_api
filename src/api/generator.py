@@ -1,5 +1,7 @@
-from fastapi import APIRouter, Body
+from fastapi import APIRouter, status
 from fastapi.responses import StreamingResponse
+
+from utils.error_handler import handle_route_error
 
 from schemas.qrcode_info import QRCodeInfo
 from services.generator import Generator    
@@ -13,6 +15,11 @@ router = APIRouter(
 
 @router.post('/generate')
 async def generate_qr(qr_info: QRCodeInfo):
-    return StreamingResponse(
-        await Generator.create(qr_info), media_type='image/png'
-    )
+    try:
+
+        new_qr_code = await Generator.create(qr_info)
+        return StreamingResponse(
+            new_qr_code, media_type='image/png'
+        )
+    except Exception as e:
+        await handle_route_error(e, status.HTTP_500_INTERNAL_SERVER_ERROR)
