@@ -19,7 +19,7 @@ async def generate_qr(qr_info: QRCodeInfo, request: Request):
     try:
 
         new_qr_code = await Generator.create(qr_info)
-        return StreamingResponse(commt
+        return StreamingResponse(
             new_qr_code, media_type='image/png'
         )
     except Exception as e:
