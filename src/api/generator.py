@@ -18,10 +18,8 @@ router = APIRouter(
 async def generate_qr(qr_info: QRCodeInfo, request: Request):
     try:
 
-        print(await request.body())
-
         new_qr_code = await Generator.create(qr_info)
-        return StreamingResponse(
+        return StreamingResponse(commt
             new_qr_code, media_type='image/png'
         )
     except Exception as e:
