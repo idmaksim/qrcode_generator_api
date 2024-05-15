@@ -1,4 +1,5 @@
-from fastapi import APIRouter, status
+from fastapi import APIRouter, Request, status
+from fastapi.encoders import jsonable_encoder
 from fastapi.responses import StreamingResponse
 
 from utils.error_handler import handle_route_error
@@ -14,8 +15,10 @@ router = APIRouter(
 
 
 @router.post('/generate')
-async def generate_qr(qr_info: QRCodeInfo):
+async def generate_qr(qr_info: QRCodeInfo, request: Request):
     try:
+
+        print(await request.body())
 
         new_qr_code = await Generator.create(qr_info)
         return StreamingResponse(
