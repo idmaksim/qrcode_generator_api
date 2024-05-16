@@ -2,7 +2,7 @@ from io import BytesIO
 import qrcode
 from qrcode.main import QRCode
 from schemas.qrcode_info import QRCodeInfo
-from PIL import Image
+from qrcode.image.pil import PilImage
 
 
 class QRCodeGenerator:
@@ -24,7 +24,7 @@ class QRCodeGenerator:
 
 class BytesArrayGenerator:
     @staticmethod
-    async def to_bytes(img: Image):
+    async def to_bytes(img: PilImage):
         img_byte_arr = BytesIO()
         img.save(img_byte_arr)
         img_byte_arr.seek(0)
