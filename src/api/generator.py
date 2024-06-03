@@ -13,7 +13,7 @@ router = APIRouter(
 )
 
 
-@router.options('/generate')
+@router.post('/generate')
 async def generate_qr(qr_info: QRCodeInfo, request: Request):
     try:
 
