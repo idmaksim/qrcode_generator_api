@@ -8,4 +8,4 @@ RUN pip install -r requirements.txt
 
 COPY . .
 
-CMD [ "python3", "src/main.py" ]
+CMD ["fastapi", "run", "src/app.py", "--port", "8080"]
