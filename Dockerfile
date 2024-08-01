@@ -8,4 +8,6 @@ RUN pip install -r requirements.txt
 
 COPY . .
 
-CMD ["fastapi", "run", "src/app.py", "--port", "8080"]
+RUN rm -r .venv
+
+CMD ["uvicorn", "src.main:app", "--port", "8080"]
